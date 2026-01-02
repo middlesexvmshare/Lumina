@@ -1,7 +1,7 @@
 
 import React, { useRef, useState } from 'react';
-import { FileItem } from '../types';
-import { GeminiService } from '../services/geminiService';
+import { FileItem } from '../types.ts';
+import { GeminiService } from '../services/geminiService.ts';
 
 interface FileUploadProps {
   files: FileItem[];

@@ -3,11 +3,8 @@ import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 
 export class GeminiService {
   private static instance: GeminiService;
-  private ai: GoogleGenAI;
 
-  private constructor() {
-    this.ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
-  }
+  private constructor() {}
 
   public static getInstance(): GeminiService {
     if (!GeminiService.instance) {
@@ -16,9 +13,14 @@ export class GeminiService {
     return GeminiService.instance;
   }
 
+  private getClient(): GoogleGenAI {
+    return new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+  }
+
   async summarizeNote(title: string, content: string): Promise<string> {
     try {
-      const response: GenerateContentResponse = await this.ai.models.generateContent({
+      const ai = this.getClient();
+      const response: GenerateContentResponse = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
         contents: `Please provide a concise, professional 3-sentence summary of the following note titled "${title}":\n\n${content}`,
         config: {
@@ -34,6 +36,7 @@ export class GeminiService {
 
   async analyzeFile(fileName: string, fileDataUrl: string, mimeType: string): Promise<string> {
     try {
+      const ai = this.getClient();
       // Extract base64 data from dataUrl
       const base64Data = fileDataUrl.split(',')[1];
       
@@ -48,7 +51,7 @@ export class GeminiService {
         });
       }
 
-      const response: GenerateContentResponse = await this.ai.models.generateContent({
+      const response: GenerateContentResponse = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
         contents: { parts },
         config: {

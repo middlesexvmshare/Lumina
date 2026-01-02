@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { Note } from '../types';
-import { GeminiService } from '../services/geminiService';
+import { Note } from '../types.ts';
+import { GeminiService } from '../services/geminiService.ts';
 
 interface NoteEditorProps {
   note: Note;
