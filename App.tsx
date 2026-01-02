@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { Sidebar } from './components/Sidebar';
-import { NoteCard } from './components/NoteCard';
-import { NoteEditor } from './components/NoteEditor';
-import { FileUpload } from './components/FileUpload';
-import { Note, FileItem, ViewMode } from './types';
+import { Sidebar } from './components/Sidebar.tsx';
+import { NoteCard } from './components/NoteCard.tsx';
+import { NoteEditor } from './components/NoteEditor.tsx';
+import { FileUpload } from './components/FileUpload.tsx';
+import { Note, FileItem, ViewMode } from './types.ts';
 
 const App: React.FC = () => {
   const [view, setView] = useState<ViewMode>(ViewMode.NOTES);
