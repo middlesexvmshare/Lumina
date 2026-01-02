@@ -1,0 +1,7 @@
+{
+  "name": "Lumina Workspace",
+  "description": "A high-performance note-taking and file management app featuring AI-powered summaries, content analysis, and a sleek modern interface.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
