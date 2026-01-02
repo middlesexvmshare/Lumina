@@ -6,21 +6,17 @@ export interface Note {
   updatedAt: number;
   tags: string[];
   aiSummary?: string;
+  isFavorite: boolean;
 }
 
 export interface FileItem {
   id: string;
   name: string;
-  type: string;
+  mimeType: string;
   size: number;
-  dataUrl: string; // Base64 or Blob URL
+  data: string; // Base64
   uploadedAt: number;
-  aiAnalysis?: string;
+  aiDescription?: string;
 }
 
-export enum ViewMode {
-  NOTES = 'NOTES',
-  FILES = 'FILES',
-  FAVORITES = 'FAVORITES',
-  AI_CHAT = 'AI_CHAT'
-}
+export type ViewType = 'notes' | 'files' | 'favorites' | 'settings';
